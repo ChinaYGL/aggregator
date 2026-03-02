@@ -41,7 +41,7 @@ jobs:
       run: |
         cd data
         # 检查文件是否存在，如果存在则更新 Gist
-        [ -f "proxies.yaml" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "proxies.yaml"
+        [ -f "clash.yaml" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "clash.yaml"
         [ -f "subscribes.txt" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "subscribes.txt"
         [ -f "domains.txt" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "domains.txt"
         [ -f "valid-domains.txt" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "valid-domains.txt"
