@@ -34,7 +34,9 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GIST_PAT }}
       run: |
-        gh gist edit ${{ secrets.GIST_LINK }} --add "proxies.yaml"
-        gh gist edit ${{ secrets.GIST_LINK }} --add "subscribes.txt"
-        gh gist edit ${{ secrets.GIST_LINK }} --add "domains.txt"
-        gh gist edit ${{ secrets.GIST_LINK }} --add "valid-domains.txt"
+        # 检查文件是否存在，如果存在则更新 Gist
+        [ -f "proxies.yaml" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "proxies.yaml"
+        [ -f "subscribes.txt" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "subscribes.txt"
+        [ -f "domains.txt" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "domains.txt"
+        [ -f "valid-domains.txt" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "valid-domains.txt"
+        echo "Gist update completed (if files existed)."
