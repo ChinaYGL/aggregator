@@ -34,8 +34,6 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GIST_PAT }}
       run: |
-        echo "GH TOKEN: ${{ secrets.GIST_PAT }}"
-        echo "Updating Gist: ${{ secrets.GIST_LINK }}"
         gh gist edit ${{ secrets.GIST_LINK }} --add "proxies.yaml"
         gh gist edit ${{ secrets.GIST_LINK }} --add "subscribes.txt"
         gh gist edit ${{ secrets.GIST_LINK }} --add "domains.txt"
