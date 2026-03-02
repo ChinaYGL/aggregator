@@ -29,11 +29,17 @@ jobs:
       id: collect
       run: |
         python -u subscribe/collect.py
+
+    - name: Debug - List Files
+      run: |
+        echo "Listing all files in workspace recursively:"
+        ls -R
       
     - name: Create/Update Gist
       env:
         GH_TOKEN: ${{ secrets.GIST_PAT }}
       run: |
+        cd data
         # 检查文件是否存在，如果存在则更新 Gist
         [ -f "proxies.yaml" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "proxies.yaml"
         [ -f "subscribes.txt" ] && gh gist edit ${{ secrets.GIST_LINK }} --add "subscribes.txt"
